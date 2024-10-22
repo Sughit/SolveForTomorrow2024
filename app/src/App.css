@@ -13,6 +13,11 @@
   padding: 50px;
 }
 
+.button{
+  background-color: #32CD32;
+  color: rgb(15, 79, 4);
+}
+
 .header-box{
   width: auto; 
   height: auto;
@@ -24,6 +29,7 @@
   text-align: center;
   margin-left: 30px;
   margin-right: 30px;
+  color: rgb(15, 79, 4);
 }
 @media only screen and (max-device-width: 1024px) {
   .parallax {
