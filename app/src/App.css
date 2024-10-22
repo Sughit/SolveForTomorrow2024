@@ -23,7 +23,7 @@
   height: auto;
   background-color: #32CD32;
   position: absolute;
-  z-index: 1000;
+  z-index: 1;
   top: 150px;
   font-size: 35px;
   text-align: center;
