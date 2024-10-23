@@ -1,13 +1,49 @@
 // medicamente.js
 import React from 'react';
 import './App.css';
-import Card from './medicament'; // Importă componenta Card
+import SearchCard from './medicament'; 
+import {MedicamentCard} from './medicament';
 
 function Medicamente() {
   return (
-    <div className="medicamente-container"> 
-      <Card />
-    </div>
+    <>
+      <SearchCard />
+      <div className='medicamente-wrapper'>
+        <MedicamentCard 
+            name='text'
+        />
+        <MedicamentCard 
+          name='text'
+        />
+        <MedicamentCard 
+          name='text'
+        />
+        <MedicamentCard 
+          name='text'
+        />
+        <MedicamentCard 
+          name='text'
+        />
+        <MedicamentCard 
+          name='text'
+        />
+        <MedicamentCard 
+          name='text'
+        />
+        <MedicamentCard 
+          name='text'
+        />
+        <MedicamentCard 
+          name='text'
+        />
+        <MedicamentCard 
+          name='text'
+        />
+        <MedicamentCard 
+          name='text'
+        />
+      </div>
+    </>
   );
 }
 

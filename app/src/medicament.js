@@ -3,17 +3,16 @@ import React, { useState } from 'react';
 import './App.css';
 import './medicament.css';   
 
-function Card() {
+function SearchCard() {
   const [searchTerm, setSearchTerm] = useState('');  
  
   const handleSearch = () => {
-    alert(`Cauti: ${searchTerm}`);  
-    
+    alert(`Cauti: ${searchTerm}`);
   };
 
   return (
-    <div className="card">
-<h2>Medicamente</h2>
+    <div className="search-card">
+      <h2>Medicamente</h2>
 
       <input 
         type="text" 
@@ -26,6 +25,17 @@ function Card() {
       <button onClick={handleSearch} className="search-button">Caută</button>
     </div>
   );
-}
+};
 
-export default Card;
+export function MedicamentCard(props)
+{
+  return(
+    <div className='card'>
+      <p>
+        {props.name}
+      </p>
+    </div>
+  );
+};
+
+export default SearchCard;
