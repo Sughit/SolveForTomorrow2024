@@ -5,6 +5,7 @@ export const doSignInWithEmailAndPassword = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password);
 };
 
-export const doSignOut = () => {
+export function doSignOut() {
+  alert('delogare');
   return auth.signOut();
 };

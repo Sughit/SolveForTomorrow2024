@@ -18,21 +18,8 @@ const Navbar = () => {
       </div>
       <ul className={menuOpen ? "open" : ""}>
         <li><Link to="/Medicamente"><b>Medicamente</b></Link></li>
-        <li><Link to="/Login">
-              <b>
-                {
-                  userLoggedIn 
-                  ?
-                  <>
-                    <button onClick={() => { doSignOut() }}><b>Delogare</b></button>
-                  </>
-                  :
-                  <>
-                    Înregistrează-te ca administrator
-                  </>
-                }
-              </b>
-            </Link></li>
+        <li disabled={userLoggedIn ? 'true' : ''}><Link to="/Login"><b>Înregistrează-te ca administrator</b></Link></li>
+        <li disabled={!userLoggedIn ? 'true' : ''}><button onClick={() => { doSignOut() }}><b>Delogare</b></button></li>
       </ul>
     </nav>
   );

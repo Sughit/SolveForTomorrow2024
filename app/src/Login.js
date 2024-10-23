@@ -15,6 +15,7 @@ const Login = () => {
       e.preventDefault()
       if(!isSigningIn) {
           setIsSigningIn(true)
+          alert('merge')
           await doSignInWithEmailAndPassword(email, password)
       }
   }
@@ -26,35 +27,37 @@ const Login = () => {
           <header>Înregistrează-te</header>
             <form id="form" onSubmit={onSubmit}>
               <div className="field input">
-                  <label for="email">Email</label>
+                  <label htmlFor="email">Email</label>
                   <input type="email" 
                     name="email" 
                     id="emailInput" 
-                    autocomplete="off" 
+                    autoComplete="off" 
                     required 
                     value={email} onChange={(e) => { setEmail(e.target.value) }}
                   />
               </div>
               <div className="field input">
-                  <label for="password">Parolă</label>
+                  <label htmlFor="password">Parolă</label>
                   <input 
                    type="password" 
                    name="password" 
                    id="passwordInput" 
-                   autocomplete="off" 
+                   autoComplete="off" 
                    required
                    value={password} onChange={(e) => { setPassword(e.target.value) }} 
                   />
               </div>
               <div className="field">
-                <input 
+                <button 
                   type="submit" 
                   className="submit-btn" 
                   name="submit" 
                   value="Trimite" 
                   required 
                   id="login" 
-                />
+                >
+                  {isSigningIn ? 'Ne conectăm...' : 'Conectat'}
+                </button>
               </div>                                
             </form>
         </div>
