@@ -31,9 +31,9 @@ export function MedicamentCard(props)
 {
   return(
     <div className='card'>
-      <p>
-        {props.name}
-      </p>
+      <img src={props.img} />
+      <p>{props.name}</p>
+      <img className='farmacie-img' src={props.farmacie} />
     </div>
   );
 };

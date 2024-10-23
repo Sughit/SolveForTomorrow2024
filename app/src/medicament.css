@@ -55,10 +55,8 @@
 .medicamente-wrapper{
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(3, 200px);
-  grid-template-rows: repeat(2, 100px);
   gap: 10px;
-  height: auto;
+  overflow-y: auto;
   margin: 10px;
   margin-top: 30px;
 }
@@ -67,23 +65,35 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
-  width: auto; /* Asigură-te că nu depășește 100% din lățimea containerului părinte */
+  width: auto; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: auto;
+}
+
+.farmacie-img{
+  top: 55px;
+  position: relative;
 }
 
 @media (min-width: 1200px)
 {
   .medicamente-wrapper{
     grid-template-columns: repeat(4, 275px);
-    grid-template-rows: repeat(2, 100px);
+    grid-template-rows: repeat(2, 475px);
+  }
+  .card{
+    min-height: 300px;
   }
 }
 
-@media (max-width: 900px)
+@media (max-width: 1200px)
 {
   .medicamente-wrapper{
     grid-template-columns: repeat(3, 200px);
-    grid-template-rows: repeat(2, 100px);
+    grid-template-rows: repeat(2, 350px);
+  }
+  .card{
+    min-height: 250px;
   }
 }
 
@@ -91,7 +101,10 @@
 {
   .medicamente-wrapper{
     grid-template-columns: repeat(2, 200px);
-    grid-template-rows: repeat(2, 100px);
+    grid-template-rows: repeat(2, 300px);
+  }
+  .card{
+    min-height: 200px;
   }
 }
 
@@ -99,7 +112,10 @@
 {
   .medicamente-wrapper{
     grid-template-columns: repeat(2, 175px);
-    grid-template-rows: repeat(2, 100px);
+    grid-template-rows: repeat(2, 300px);
+  }
+  .card{
+    min-height: 200px;
   }
 }
   
