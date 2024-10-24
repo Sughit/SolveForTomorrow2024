@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { auth, db } from "./firebase.js";
 import { doc, getDoc } from "firebase/firestore";
 import { NavLink as Link } from 'react-router-dom';
+import { signOut } from "firebase/auth";
 import './Navbar.css';
 
 const Navbar = () => {
@@ -13,13 +14,16 @@ const Navbar = () => {
       console.log(user);
       setUser(user);
 
-      const docRef = doc(db, "Users", user.uid);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        setUserDetails(docSnap.data());
-        console.log(docSnap.data());
-      } else {
-        console.log("User is not logged in");
+      if(user != null)
+      {
+        const docRef = doc(db, "Users", user.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setUserDetails(docSnap.data());
+          console.log(docSnap.data());
+        } else {
+          console.log("User is not logged in");
+        }
       }
     });
   };
@@ -27,18 +31,14 @@ const Navbar = () => {
     fetchUserData();
   }, []);
 
-  async function handleLogout() {
-    try {
-      await auth.signOut().then(function(){
-        //ne-am delogat
-      }).catch(function(error){
-        console.log(error);
-      });
-      window.location.href = "/";
-      console.log("User logged out successfully!");
-    } catch (error) {
-      console.error("Error logging out:", error.message);
-    }
+  function handleLogout() {
+    signOut(auth).then(function(){
+      alert('Signed out');
+    }).catch(function(error){
+      alert(error.message);
+    });
+    window.location.href = "/";
+    console.log("User logged out successfully!");
   }
 
   return(
