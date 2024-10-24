@@ -25,10 +25,13 @@ function Stoc(){
     useEffect(() => {
       fetchUserData();
     }, []);
-    console.log(userDetails);
+    const dataToShow = () => {
+        if(userDetails) return <>{userDetails.farmacie}</>;
+        return <p>...Loading</p>
+    }
   return(
     <>
-      {userDetails.farmacie}
+      {dataToShow()}
     </>
   )
 }
