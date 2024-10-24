@@ -52,8 +52,15 @@ function Navbar(){
       <ul className={menuOpen ? "open" : ""}>
         <li><Link to="/Medicamente"><b>Medicamente</b></Link></li>
         {userDetails ? (
+          <li>
+            <Link to="/Stoc"><b>Stoc</b></Link>
+          </li>
+        ) : (
+          <></>
+        )}
+        {userDetails ? (
           <button onClick={handleLogout}>
-            Delogare
+            <b>Delogare</b>
           </button>
         ) : (
           <li><Link to="/Login"><b>Înregistrează-te ca administrator</b></Link></li>
