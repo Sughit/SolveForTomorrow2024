@@ -3,19 +3,18 @@ import { auth, db } from "./firebase.js";
 import { doc, getDoc } from "firebase/firestore";
 import { NavLink as Link } from 'react-router-dom';
 import { signOut } from "firebase/auth";
+import { toast } from "react-toastify";
 import './Navbar.css';
 
-const Navbar = () => {
+function Navbar(){
   const [menuOpen, setMenuOpen] = useState(false);
   const [userDetails, setUserDetails] = useState(null);
-  const [user, setUser] = useState(null);
   const fetchUserData = async () => {
     auth.onAuthStateChanged(async (user) => {
-      console.log(user);
-      setUser(user);
-
       if(user != null)
       {
+        console.log(user);
+
         const docRef = doc(db, "Users", user.uid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
@@ -33,12 +32,13 @@ const Navbar = () => {
 
   function handleLogout() {
     signOut(auth).then(function(){
-      alert('Signed out');
+      toast.success("Utilizator deconectat cu succes!", {
+        position: "top-center",
+      });
+      window.location.href = "/";
     }).catch(function(error){
       alert(error.message);
     });
-    window.location.href = "/";
-    console.log("User logged out successfully!");
   }
 
   return(
@@ -51,7 +51,7 @@ const Navbar = () => {
       </div>
       <ul className={menuOpen ? "open" : ""}>
         <li><Link to="/Medicamente"><b>Medicamente</b></Link></li>
-        {user ? (
+        {userDetails ? (
           <button onClick={handleLogout}>
             Delogare
           </button>
