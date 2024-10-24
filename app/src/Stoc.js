@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './stoc.css';
 import { auth, db } from "./firebase.js";
-import { doc, getDoc, getDocs, collection } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { fetchSubcollectionDocuments } from './HandleCollections.js';
 
 function Stoc(){
