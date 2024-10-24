@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './stoc.css';
 import { auth, db } from "./firebase.js";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, getDocs, collection } from "firebase/firestore";
 
 function Stoc(){
     const [userDetails, setUserDetails] = useState(null);
@@ -22,12 +22,40 @@ function Stoc(){
         }
       });
     };
+
+    const catenaRef = collection(db, 'Stoc/catena/produse');
+    const donaRef = collection(db, 'Stoc/donaRef/produse');
+    const drmaxRef = collection(db, 'Stoc/drmaxRef/produse');
+    const helpnetRef = collection(db, 'Stoc/helpnetRef/produse');
+
+    const getCollection = () =>{
+      if(userDetails)
+      {
+        switch(userDetails.farmacie)
+        {
+          case 'catena':
+            return catenaRef;
+          break;
+          case 'dona':
+            return donaRef;
+          break;
+          case 'drmax':
+            return drmaxRef;
+          break;
+          case 'helpnet':
+            return helpnetRef;
+          break;
+        }
+      }
+    }
+
     useEffect(() => {
       fetchUserData();
     }, []);
+
     const dataToShow = () => {
-        if(userDetails) return <>{userDetails.farmacie}</>;
-        return <p>...Loading</p>
+      if(userDetails) return <>{userDetails.farmacie}</>;
+      return <p>...Loading</p>
     }
   return(
     <>
