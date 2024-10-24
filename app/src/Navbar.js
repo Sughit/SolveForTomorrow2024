@@ -8,27 +8,7 @@ import './Navbar.css';
 
 function Navbar(){
   const [menuOpen, setMenuOpen] = useState(false);
-  const [userDetails, setUserDetails] = useState(null);
-  const fetchUserData = async () => {
-    auth.onAuthStateChanged(async (user) => {
-      if(user != null)
-      {
-        console.log(user);
-
-        const docRef = doc(db, "Users", user.uid);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          setUserDetails(docSnap.data());
-          console.log(docSnap.data());
-        } else {
-          console.log("User is not logged in");
-        }
-      }
-    });
-  };
-  useEffect(() => {
-    fetchUserData();
-  }, []);
+  const userDetails = auth.currentUser;
 
   function handleLogout() {
     signOut(auth).then(function(){

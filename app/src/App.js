@@ -7,6 +7,7 @@ import MainPage from './MainPage.js';
 import Navbar from './Navbar.js';
 import Medicamente from './Medicamente.js';
 import Login from './Login.js';
+import Stoc from './Stoc.js';
 import { auth } from "./firebase";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path='/' element={<MainPage />}/>
         <Route path='Medicamente' element={<Medicamente />}/>
         <Route path='Login' element={<Login />}/>
+        <Route path='Stoc' element={<Stoc />} />
       </Routes>
       <ToastContainer />
     </Router>
